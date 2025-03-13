@@ -30,7 +30,7 @@ HEADERS = include/binary_tree.hpp include/vs.hpp include/bv.hpp
 # file. We tell make to call the gnu c++ compiler (g++) with the specified parameters.
 # We use the general CPPFLAGS variable and provide additional flags to define how
 # we want the compiler to optimize and what the output file should be called.
-query: query.cpp $(HEADERS)
+main: query.cpp $(HEADERS)
 	g++ $(CPPFLAGS) -DNDEBUG -Ofast -o main query.cpp
 
 # Tells make what to do when "make clean" is called.
