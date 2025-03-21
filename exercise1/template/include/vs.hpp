@@ -9,16 +9,16 @@ namespace pfp {
 template <class dtype>
 class vs {
   public:
-    void insert(dtype val) { }
+    void insert(dtype val) { val++; }
 
     int count(dtype val) {
-        return 0;
+        return val;
     }
 };
 
 }  // namespace pfp
 
-void storeInorder(Node* root, vector<int>& nodes) {
+/*void storeInorder(Node* root, vector<int>& nodes) {
   if (root == nullptr) 
       return;
 
@@ -59,4 +59,4 @@ Node* balanceBST(Node* root) {
 
   // Build the balanced tree from the sorted nodes
   return buildBalancedTree(nodes, 0, nodes.size() - 1);
-}
+}*/

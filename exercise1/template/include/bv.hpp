@@ -9,12 +9,13 @@ namespace pfp {
 template <class dtype>
 class bv {
   public:
+    bool boolarray[1000000]={0};
     bv(dtype limit) {}
-
-    void insert(dtype value) { }
+    
+    void insert(dtype value) { boolarray[value]=1; }
 
     int count(dtype value) const {
-        return 0;
+        return boolarray[value];
     }
 };
 
