@@ -3,60 +3,29 @@
 */
 
 #pragma once
-
+#include <bits/stdc++.h>
 namespace pfp {
 
 template <class dtype>
 class vs {
   public:
-    void insert(dtype val) { val++; }
+    int test =1;
+    std::vector<int> v={};
+    void insert(dtype val) { 
+      v.push_back(val);
+      test=1;
+    }
 
     int count(dtype val) {
-        return val;
+      // Sort vector in ascending order
+      if(test) [[unlikely]]
+        std::sort(v.begin(), v.end()); test=0;
+      if (std::binary_search(v.begin(), v.end(), val))
+        return 1;
+      else
+        return 0;
+
     }
 };
 
 }  // namespace pfp
-
-/*void storeInorder(Node* root, vector<int>& nodes) {
-  if (root == nullptr) 
-      return;
-
-  // Traverse the left subtree
-  storeInorder(root->left, nodes);
-
-  // Store the node data
-  nodes.push_back(root->data);
-
-  // Traverse the right subtree
-  storeInorder(root->right, nodes);
-}
-
-// Function to build a balanced BST from a sorted array
-Node* buildBalancedTree(vector<int>& nodes, int start, int end) {
-  
-  // Base case
-  if (start > end) 
-      return nullptr;
-
-  // Get the middle element and make it the root
-  int mid = (start + end) / 2;
-  Node* root = new Node(nodes[mid]);
-
-  // Recursively build the left and right subtrees
-  root->left = buildBalancedTree(nodes, start, mid - 1);
-  root->right = buildBalancedTree(nodes, mid + 1, end);
-
-  return root;
-}
-
-// Function to balance a BST
-Node* balanceBST(Node* root) {
-  vector<int> nodes;
-
-  // Store the nodes in sorted order
-  storeInorder(root, nodes);
-
-  // Build the balanced tree from the sorted nodes
-  return buildBalancedTree(nodes, 0, nodes.size() - 1);
-}*/

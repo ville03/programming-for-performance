@@ -10,7 +10,7 @@ template <class dtype>
 class bv {
   public:
     bool boolarray[1000000]={0};
-    bv(dtype limit) {}
+    bv(dtype limit) { limit++; limit--;}
     
     void insert(dtype value) { boolarray[value]=1; }
 
