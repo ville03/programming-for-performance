@@ -9,8 +9,8 @@ namespace pfp {
 template <class dtype>
 class bv {
   public:
-    bool boolarray[1000000]={0};
-    bv(dtype limit) { limit++; limit--;}
+    bool * boolarray;
+    bv(dtype limit) {boolarray = new bool [limit];}
     
     void insert(dtype value) { boolarray[value]=1; }
 
