@@ -5,50 +5,52 @@
 #include "include/VByte.hpp"
 
 template <bool debug = false>
-void run_ops(std::istream& in) {
+void read(std::FILE* in) {
     if constexpr (debug) std::cout << "Enter values to add" << std::endl;
     uint64_t n = 0;
     uint64_t val = 0;
     uint64_t read = std::fread(&n, sizeof(uint64_t), 1, in);
-    pfp::VB vb();
     assert(read == 1);
     if constexpr (debug) std::cout << "n = " << n << std::endl;
-    for (int i = 0; i < n; i++) {
-        uint64_t read = std::fread(&val, sizeof(uint64_t), 1, in);
+    pfp::VB vb(n);
+    for (uint64_t i = 0; i < n; i++) {
+        read = std::fread(&val, sizeof(uint64_t), 1, in);
         assert(read == 1);
         if constexpr (debug) std::cout << "val = " << val << std::endl;
-        vb.append(val)
-        
+        vb.append(val);
     }
+
     read = std::fread(&n, sizeof(uint64_t), 1, in);
     assert(read == 1);
     if constexpr (debug) std::cout << "n = " << n << std::endl;
-    for (int i = 0; i < n; i++) {
-        uint64_t read = std::fread(&val, sizeof(uint64_t), 1, in);
+    uint64_t output = 0;
+    for (uint64_t i = 0; i < n; i++) {
+        read = std::fread(&val, sizeof(uint64_t), 1, in);
         assert(read == 1);
         if constexpr (debug) std::cout << "val = " << val << std::endl;
-        vb.at()
-        
+        output = vb.at(val);
+        std::cout << output << std::endl;
     }
 }
 
 int main(int argc, char const* argv[]) {
-    int input_file = 0;
+    int file_index = 0;
+    int i = 1;
     bool debug = false;
     while (i < argc) {
         std::string s(argv[i++]);
         if (s.compare("-k") == 0) {
-            debug = true;
+            debug = false;
         } else if (s.compare("-s") == 0) {
-            debug = true;
+            debug = false;
         } else if (s.compare("-n") == 0) {
-            debug = true;
+            debug = false;
         } else if (s.compare("-l") == 0) {
-            debug = true;
+            debug = false;
         } else if (s.compare("-d") == 0) {
             debug = true;
         } else {
-            input_file = i - 1;
+            file_index = i - 1;
         }
     }
     if (debug) {
