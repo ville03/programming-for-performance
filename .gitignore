@@ -1,3 +1,5 @@
 *.zip
 *.pdf
 main
+data*
+br

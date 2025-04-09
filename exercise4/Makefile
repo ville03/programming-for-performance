@@ -13,4 +13,7 @@ clean:
 debug: main.cpp $(HEADERS)
 	g++ $(CPPFLAGS) -DDEBUG -g -o main main.cpp
 
+br: binaryreader.cpp $(HEADERS)
+	g++ $(CPPFLAGS) -Ofast -o br binaryreader.cpp
+
 %.hpp:

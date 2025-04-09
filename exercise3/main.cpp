@@ -89,13 +89,10 @@ int main(int argc, char const* argv[]) {
     bool time = false;
     while (i < argc) {
         std::string s(argv[i++]);
-        if (s.compare("-t") == 0) {
+        if (s.compare("-k") == 0) {
             time = true;
-        } else if (s.compare("-b") == 0) {
+        } else if (s.compare("-s") == 0) {
             task = 1;
-        } else if (s.compare("-h") == 0) {
-            help();
-            exit(0);
         } else if (s.compare("-d") == 0) {
             debug = true;
         } else {
